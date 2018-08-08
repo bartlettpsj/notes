@@ -49,6 +49,7 @@ module.exports = function makeWebpackConfig() {
 
     // Filename for entry points
     // Only adds hash in build mode
+    // filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
     filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
 
     // Filename for non-entry points
@@ -123,8 +124,16 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/raw-loader
       // Allow loading html through js
       test: /\.html$/,
-      loader: 'raw-loader'
-    }]
+      exclude: /\index.html$/,
+      loader: 'file-loader' // 'raw-loader'
+    }, {
+        // HTML LOADER
+        // Reference: https://github.com/webpack/raw-loader
+        // Allow loading html through file
+        test: /\index.html$/,
+        loader: 'raw-loader'
+      }
+    ]
   };
 
   // ISTANBUL LOADER
@@ -168,12 +177,13 @@ module.exports = function makeWebpackConfig() {
         }
       }
     })
+
   ];
 
   // Skip rendering index.html in test mode
   if (!isTest) {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
-    // Render index.html
+    // Render index.bundled.html
     config.plugins.push(
       new HtmlWebpackPlugin({
         template: './src/public/index.html',

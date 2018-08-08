@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>List of Notes</h1>
+  <table class="table table-striped table-bordered ">
+    <thead>
+    <tr>
+      <th class="text-center" scope="col">Select</th>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Modified</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="note in vm.notes track by note.id">
+      <td class="text-center"><input type="checkbox" ng-model="note.selected" ng-change="vm.checkSelections()"></td>
+      <td ng-bind="note.id"/>
+      <td><a ui-sref="note({id: note.id})">{{note.title}}</a></td>
+      <td ng-bind="note.modified"/>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-primary">Create Note</button>
+  <button type="button" class="btn btn-primary" ng-disabled="!vm.hasSelected">Delete Selected</button>
+
+</div>
