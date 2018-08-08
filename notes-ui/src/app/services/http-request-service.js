@@ -1,13 +1,18 @@
+const API_PORT = 3200;
+const API_ENDPOINT = 'api';
+
 class HttpRequestService {
 
-  constructor($http, $log) {
+  constructor($http, $log, $location) {
     'ngInject';
 
     this.$http = $http;
     this.$log = $log;
-    this.apiRoute = "http://localhost:3200/api"; // need to be parameterized build
 
-    console.log('http service initialized');
+    // points to same host, but needs to be parameterized build for API location
+    this.apiRoute = $location.protocol() + '://' +  $location.host() + ':' + API_PORT + '/' + API_ENDPOINT;
+
+    $log.debug('http service initialized:- ' + this.apiRoute);
   }
 
   // Cannot use due to issue with uglify and es6 babel as it seems uglify cant handle es6
