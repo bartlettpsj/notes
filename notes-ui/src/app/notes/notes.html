@@ -14,14 +14,14 @@
     <tr ng-repeat="note in vm.notes track by note.id">
       <td class="text-center"><input type="checkbox" ng-model="note.selected" ng-change="vm.checkSelections()"></td>
       <td ng-bind="note.id"/>
-      <td><a ui-sref="note({id: note.id})">{{note.title}}</a></td>
+      <td><a ng-click="vm.showNote(note)" ui-sref="note({id: note.id})">{{note.title}}</a></td>
       <td ng-bind="note.modified"/>
     </tr>
 
     </tbody>
   </table>
 
-  <button type="button" class="btn btn-primary">Create Note</button>
+  <button type="button" class="btn btn-primary" ng-click="vm.showNote()">Create Note</button>
   <button type="button" class="btn btn-primary" ng-disabled="!vm.hasSelected">Delete Selected</button>
 
 </div>

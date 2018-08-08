@@ -1,14 +1,15 @@
 import angular from 'angular';
 import bootstrap from 'bootstrap';
+import uiBootstrap from 'angular-ui-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import '../style/app.css';
+//import '../style/app.css';
 import commonServices from './services/common-services';
 import 'angular-ui-router';
 
-import notesController from './notes.js';
-import notesTemplate from './notes.html';
+import notesController from './notes/notes.js';
+import notesTemplate from './notes/notes.html';
 
-// Bootstrap directive
+// Bootstrap the app directive - probably wont use!
 let app = () => {
   return {
     template: require('./app.html'),
@@ -46,7 +47,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [commonServices, 'ui.router'])
+angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
   .config(function($stateProvider, $urlRouterProvider) {
@@ -54,13 +55,13 @@ angular.module(MODULE_NAME, [commonServices, 'ui.router'])
     // Home
     $urlRouterProvider.when('', 'notes');
 
-    // the unknown
+    // The unknown
     $urlRouterProvider.otherwise('/404');
 
     $stateProvider.state({
       name: '404',
       url: '{path:.*}',
-      templateUrl: require('./404.html')
+      templateUrl: require('./system/404.html')
     });
 
     // $stateProvider.state({
@@ -86,18 +87,6 @@ angular.module(MODULE_NAME, [commonServices, 'ui.router'])
       controller: notesController,
       controllerAs: 'vm'
     });
-
-    // $stateProvider.state({
-    //   name: 'hello',
-    //   url: '/hello',
-    //   template: '<h3>Hello Template World!</h3>'
-    // });
-    //
-    // $stateProvider.state({
-    //   name: 'paul',
-    //   url: '/paul/{id}',
-    //   template: '<h2>Hello Paul Bartlett - id {{id}}!</h2>'
-    // });
 
   })
 
