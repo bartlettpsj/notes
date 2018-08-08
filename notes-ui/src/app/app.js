@@ -1,4 +1,6 @@
 import angular from 'angular';
+import bootstrap from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/app.css';
 import commonServices from './services/common-services';
 

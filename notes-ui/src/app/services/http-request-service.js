@@ -11,7 +11,7 @@ class HttpRequestService {
   }
 
   // Using async
-  async getDataById(endPoint, id) {
+  async getDataByIdAsync(endPoint, id) {
     const response = await this.$http({
       method: 'GET',
       url: `${this.apiRoute}/${endPoint}/${id}`,
@@ -23,7 +23,7 @@ class HttpRequestService {
   }
 
   // Using promises
-  getDataById2(endPoint, id) {
+  getDataById(endPoint, id) {
     return this.$http({
       method: 'GET',
       url: `${this.apiRoute}/${endPoint}/${id}`,
