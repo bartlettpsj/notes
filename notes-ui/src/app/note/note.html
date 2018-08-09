@@ -1,1 +1,30 @@
-<div>This is a note!!!</div>
+<div class="container">
+  <div class="modal-header">
+    <h1>Note {{ vm.note.id }}</h1>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group row">
+      <label for="title" class="col-sm-1 col-form-label">Title:</label>
+      <div class="col-sm-11">
+        <input type="text" class="form-control" id="title" ng-model="vm.note.title" placeholder="Enter title"/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="text" class="col-sm-1 col-form-label">Text:</label>
+      <div class="col-sm-11">
+        <textarea class="form-control" id="text" rows="7" ng-model="vm.note.text" placeholder="Enter text"></textarea>
+      </div>
+    </div>
+
+    <div class="offset-sm-1 col-sm-11 small font-italic mt-2">
+      <span title="{{::vm.note.modified | dateTime}}">Last modified {{::vm.note.modified | dateToNow }}</span>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary" ng-click="vm.saveNote()">Save</button>
+      <button type="button" ui-sref="notes" class="btn btn-secondary" ng-click="vm.cancelModal()">{{ vm.isModal ? 'Cancel' : 'Return to  List' }}</button>
+  </div>
+</div>

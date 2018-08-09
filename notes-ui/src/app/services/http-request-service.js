@@ -56,8 +56,7 @@ class HttpRequestService {
       method: 'PUT',
       url: `${this.apiRoute}/${endPoint}`,
       headers: {
-        'Content-Type': 'application/json',
-        authorization: this.loopBackAuth.accessTokenId
+        'Content-Type': 'application/json'
       },
       data: data
     }).then(response => response)
@@ -66,6 +65,18 @@ class HttpRequestService {
       });
   }
 
+  deleteDataById(endPoint, id) {
+    return this.$http({
+      method: 'DELETE',
+      url: `${this.apiRoute}/${endPoint}/${id}`,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response)
+      .catch(error => {
+        this.$log.error('http-request-service - deleteDataById() failed!', error);
+      });
+  }
 
 }
 

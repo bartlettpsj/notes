@@ -1,13 +1,19 @@
 import angular from 'angular';
-import bootstrap from 'bootstrap';
-import uiBootstrap from 'angular-ui-bootstrap';
+import 'bootstrap'; // is this needed? Size?
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import '../style/app.css';
+import 'angular-ui-bootstrap';
+// import 'ui-bootstrap-tpls'
+import '../style/app.css';
 import commonServices from './services/common-services';
 import 'angular-ui-router';
+import _ from 'lodash';
 
 import notesController from './notes/notes.js';
 import notesTemplate from './notes/notes.html';
+import noteController from './note/note.js';
+import noteTemplate from './note/note.html';
+import moment from "moment";
+
 
 // Bootstrap the app directive - probably wont use!
 let app = () => {
@@ -47,9 +53,11 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
+angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ui.bootstrap.modal', 'ui.bootstrap.pagination'])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
+
+  // Define states
   .config(function($stateProvider, $urlRouterProvider) {
 
     // Home
@@ -64,14 +72,6 @@ angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
       templateUrl: require('./system/404.html')
     });
 
-    // $stateProvider.state({
-    //   name: 'home',
-    //   url: '/',
-    //   templateUrl: require('./home.html'),
-    //   controller: notesController,
-    //   controllerAs: 'vm'
-    // });
-
     $stateProvider.state({
       name: 'notes',
       url: '/notes',
@@ -83,12 +83,16 @@ angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
     $stateProvider.state({
       name: 'note',
       url: '/note/{id}',
-      templateUrl: notesTemplate,
-      controller: notesController,
+      templateUrl: noteTemplate,
+      controller: noteController,
       controllerAs: 'vm'
-    });
-
+    })
   })
+
+  // Define filters
+  .filter('dateToNow', () => date => moment(date).fromNow())
+  .filter('dateTime', () => date => moment(date).format('LLL'))
+
 
   // todo... make this work without webpack-dev-server, need server smarts or dummy pages
   // .config(["$locationProvider", function($locationProvider) {

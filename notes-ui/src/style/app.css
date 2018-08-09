@@ -1,22 +1,40 @@
 /* styles in src/style directory are applied to the whole page */
 body {
-  background: #0147A7;
-  color: #fff;
+  margin: 20px;
+  /*background: #0147A7;*/
+  /*color: #fff;*/
 }
 
-a {
-  color: #03A9F4;
+label {
+  font-weight: bold;
 }
 
-main {
-  padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 50px;
-  display: block;
-}
+/*a {*/
+  /*color: #03A9F4;*/
+/*}*/
 
-footer {
-  text-align: center;
-  font-size: 0.8em;
+/*main {*/
+  /*padding: 1em;*/
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  /*text-align: center;*/
+  /*margin-top: 50px;*/
+  /*display: block;*/
+/*}*/
+
+/*footer {*/
+  /*text-align: center;*/
+  /*font-size: 0.8em;*/
+/*}*/
+
+/* Hack to fix bootstrap 4 modal*/
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
 }
