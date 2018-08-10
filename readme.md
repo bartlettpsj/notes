@@ -54,12 +54,14 @@ Note: the UI project is based on a starter project angularjs-webpack.  This incl
 
 ## Testing
 
-You should make sure the API is not running, then you can run the test via:
+You should make sure the API is not running, then you can run the tests via:
 
 ```
-cd notes-api
-npm test
+cd notes
+./tests.sh
 ```
+
+The script will build the API and run the unit tests.
 
 ## Production Running
 
