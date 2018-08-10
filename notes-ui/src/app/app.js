@@ -1,11 +1,10 @@
 import angular from 'angular';
-import 'bootstrap'; // is this needed? Size?
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'angular-ui-bootstrap';
 import '../style/app.css';
 import commonServices from './services/common-services';
 import 'angular-ui-router';
-import _ from 'lodash';
 import moment from "moment";
 
 import notesController from './notes/notes.js';
@@ -24,12 +23,11 @@ class AppController {
     this.$scope = $scope;
     this.httpRequestService = httpRequestService;
   }
-
 }
 
+// Define the angular module with dependencies
 const MODULE_NAME = 'app';
 
-// angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ui.bootstrap.modal', 'ui.bootstrap.pagination'])
 angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
 
   .controller('AppCtrl', AppController)
