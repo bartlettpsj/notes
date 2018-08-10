@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 import noteController from '../note/note.js';
 import noteTemplate from '../note/note.html';
-import url from './pagination-fix.html';
 
 /**
  * Handle list of notes.

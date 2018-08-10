@@ -16,7 +16,7 @@ A small system for managing notes.
 Comprises two sub-projects -  API and UI.  Both are written in javascript.  Each has a separate readme.md file.
 
 - [api readme](notes-api/readme.md)
-- [ui readme](notes-ui/readme.md)
+- [ui readme](notes-ui/README.md)
 
 ### API
 
