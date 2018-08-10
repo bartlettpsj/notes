@@ -11,10 +11,18 @@ const app = new Koa();
 const router = new Router({ prefix: `/${API_ENDPOINT}`});
 const db = require('./dbaccess');
 
+/**
+ * Return single note.
+ */
 router.get('/notes/:id', async (ctx, next) => {
   const id = parseInt(ctx.params.id) || 0;
   const data = await db.find({id});
-  ctx.body = data;// || {}; // 204 returned if no data
+
+  if (data) {
+    ctx.body = data; // 200 if ok.  204 returned if no data, 404 if not found.
+  } else {
+    ctx.status = 404;
+  }
 });
 
 // Send some test data

@@ -24,7 +24,7 @@
   </div>
 
   <div class="modal-footer">
-      <button type="button" class="btn btn-primary" ng-click="vm.saveNote()">Save</button>
-      <button type="button" ui-sref="notes" class="btn btn-secondary" ng-click="vm.cancelModal()">{{ vm.isModal ? 'Cancel' : 'Return to  List' }}</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.saveNote()">Save</button>
+    <button type="button" ui-sref="notes" class="btn btn-secondary" ng-click="vm.cancelModal()">{{ vm.modalInstance ? 'Cancel' : 'Return to List' }}</button>
   </div>
 </div>

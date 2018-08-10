@@ -3,19 +3,24 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const _ = require('lodash');
 
+const DB_LOCATION = './data/notesdb.json';
 
+/**
+ * Singleton for database access to lowdb
+ */
 class Dbaccess {
   constructor() {
     // Initialize lowdb 'database"
-    const adapter = new FileSync('./data/notesdb.json');
+    const adapter = new FileSync(DB_LOCATION);
     this.db = low(adapter);
 
-    // Set some defaults (required as JSON file starts empty)
-    this.db.defaults({ notes: [], maxid: 5}).write();
+    // Set initial database
+    this.db.defaults({ notes: [], maxid: 0}).write();
   }
 
   /**
-   * Perform filter on data
+   * Perform filter on data.
+   *
    * @param filter
    */
   async filter(filter) {
@@ -27,7 +32,8 @@ class Dbaccess {
   }
 
   /**
-   * Perform find on data
+   * Perform find on data.
+   *
    * @param filter
    */
   async find(filter) {
@@ -39,7 +45,8 @@ class Dbaccess {
   }
 
   /**
-   * Performs an upsert on single note.
+   * Performs an upsert on a single note.
+   *
    * @param note
    * @returns {Promise<void>}
    */
@@ -50,9 +57,9 @@ class Dbaccess {
       note.modified = new Date();
 
       const getNextId = () => {
-        const maxid = this.db.get('maxid').value();
-        this.db.set('maxid', maxid+1).write();
-        return maxid+1;
+        const maxid = this.db.get('maxid').value() + 1;
+        this.db.set('maxid', maxid).write();
+        return maxid;
       };
 
       if (id) {

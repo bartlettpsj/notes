@@ -1,45 +1,58 @@
-import _ from 'lodash';
-import moment from 'moment';
-
+/**
+ * Handle display and edit of a single note.  This may be called as modal or as page.
+ */
 class NoteController {
-  constructor($scope, $stateParams, $state, httpRequestService) { // $uibModalInstance)
+  constructor($scope, $stateParams, $state, httpRequestService) {
     'ngInject';
 
     this.httpRequestService = httpRequestService;
     this.$state = $state;
+    this.modalInstance = $scope.vm;
     this.note = {};
 
-    // Save for later in note.js!
-    const id =  $stateParams.id;
-
-    if(id) {
-      this.loadNote(id);
+    // Load note by id if passed
+    if ($stateParams.id) {
+      this.loadNote($stateParams.id);
     }
-
-    this.isModal = $scope.vm;
   }
 
+  /**
+   * Load individual note by id.
+   *
+   * @param id
+   * @returns {*}
+   */
   loadNote(id) {
-    this.httpRequestService.getDataById('notes', id).then(data => {
-      this.note = data;
+    return this.httpRequestService.getDataById('notes', id).then(data => {
+      if (data) {
+        this.note = data;
+      } else {
+        // Note not found or any form of error from server
+        this.$state.go('404');
+      }
+
     });
   }
 
+  /**
+   * Perform upsert of note then close if via modal.  go to list state.
+   */
   saveNote() {
-    // Perform upsert on note then close if via modal.  go to list state.
+    // Upsert
     this.httpRequestService.putData('notes', this.note).then(response => {
-      if (this.isModal) {
-        this.isModal.$close('cancel');
-      }
+      this.cancelModal();
 
-      // go to the list
+      // Display list
       this.$state.go('notes');
     })
   }
 
+  /**
+   * Close the modal if opened as modal.
+   */
   cancelModal() {
-    if (this.isModal) {
-      this.isModal.$close('cancel');
+    if (this.modalInstance) {
+      this.modalInstance.$close('cancel');
     }
   }
 

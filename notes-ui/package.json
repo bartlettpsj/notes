@@ -8,14 +8,10 @@
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
     "start": "export DEBUG= && npm run server",
-    "go": "cd dist && python -m SimpleHTTPServer 8080",
-    "fred": "npm run go"
+    "go": "cd dist && python -m SimpleHTTPServer 8080"
   },
   "author": "Paul Bartlett",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/preboot/angularjs-webpack/issues"
-  },
   "dependencies": {
     "angular": "^1.7.0",
     "angular-ui-bootstrap": "^2.5.6",

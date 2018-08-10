@@ -14,17 +14,26 @@
     <tr ng-repeat="note in vm.notes track by note.id">
       <td class="text-center"><input type="checkbox" ng-model="note.selected" ng-change="vm.checkSelections()"></td>
       <td ng-bind="note.id"/>
-      <td><a xng-click="vm.showNote(note)" ui-sref="note({id: note.id})">{{note.title}}</a></td>
+      <td><a ui-sref="note({id: note.id})">{{note.title}}</a></td>
       <td title="{{::note.modified | dateTime}}" ng-bind="::note.modified | dateToNow"/>
     </tr>
 
     </tbody>
   </table>
 
-  <!--Bootstrap bug doesnt work in v4-->
-  <!--<ul uib-pagination total-items="42" ng-model="vm.pagenumber" class="pagination-sm"></ul>-->
+  <!--todo.. Bootstrap bug doesnt work in v4- they need to add new classes -->
+  <!--<div class="pagination">-->
+  <!--<ul uib-pagination xtemplate-url="vm.paginationUrl" total-items="42" ng-model="vm.pagenumber" class="pagination"></ul>-->
+  <!--</div>-->
+
+  <!--Hard coded for UX demo-->
+  <ul class="pagination float-right">
+    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
 
   <button type="button" class="btn btn-primary" ng-click="vm.showNote()">Create Note</button>
   <button type="button" class="btn btn-primary" ng-click="vm.deleteSelections()" ng-disabled="!vm.hasSelected">Delete Selected</button>
-
 </div>
