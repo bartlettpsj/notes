@@ -1,89 +1,46 @@
-# angularjs-webpack
+# notes-ui angularjs web application
 
-[![Dependency Status](https://david-dm.org/preboot/angularjs-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angularjs-webpack/dev-status.svg)](https://david-dm.org/preboot/angularjs-webpack#info=devDependencies)
+The application provides a simple  CRUD UI for very basic note objects.
 
-A complete, yet simple, starter for AngularJS using Webpack.
+## Contents
 
-This workflow serves as a starting point for building AngularJS (1.x) applications using Webpack 2.x. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
+- [Overview](#overview)
+- [Setup](#Setup) 
+- [Building](#Building)
+- [Running](#Running)
 
-* Heavily commented webpack configuration with reasonable defaults.
-* ES6, and ES7 support with babel.
-* Source maps included in all builds.
-* Development server with live reload.
-* Production builds with cache busting.
-* Testing environment using karma to run tests and jasmine as the framework.
-* Code coverage when tests are run.
-* No gulp and no grunt, just npm scripts.
 
->Warning: Make sure you're using the latest version of Node.js and NPM
+## Overview
 
-### Quick start
+A simple CRUD UI written in Javascript ES6 with the [Angularjs framework](https://angularjs.org).  Uses Bootstrap 4, angular-ui-bootstrap and angular-ui-router. Also uses Webpack to transpile (babel), uglify, minify and package the project. 
 
-> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
+## Setup
 
-```bash
-# clone our repo
-$ git clone https://github.com/preboot/angularjs-webpack.git my-app
+Requirements for running the application:
 
-# change directory to your app
-$ cd my-app
+- Node.js >= 7.6
+- NPM 
 
-# install the dependencies with npm
-$ npm install
+## Configuration
 
-# start the server
-$ npm start
+These values are included at the top of the http-request-service.js file.  
+
+```
+const API_PORT = 3200;
+const API_ENDPOINT = 'api';
 ```
 
-go to [http://localhost:8080](http://localhost:8080) in your browser.
+## Building
 
-# Table of Contents
+```
+cd notes-ui
+npm i
+npm run build
+```
 
-* [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
-    * [Developing](#developing)
-    * [Testing](#testing)
-* [License](#license)
+## Running for development
 
-# Getting Started
-
-## Dependencies
-
-What you need to run this app:
-* `node` and `npm` (Use [NVM](https://github.com/creationix/nvm))
-* Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
-
-## Installing
-
-* `fork` this repo
-* `clone` your fork
-* `npm install` to install all dependencies
-
-## Running the app
-
-After you have installed all dependencies you can now run the app with:
-```bash
+```
+cd notes-ui
 npm start
 ```
-
-It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
-
-## Developing
-
-### Build files
-
-* single run: `npm run build`
-* build files and watch: `npm start`
-
-## Testing
-
-#### 1. Unit Tests
-
-* single run: `npm test`
-* live mode (TDD style): `npm run test-watch`
-
-# License
-
-[MIT](/LICENSE)

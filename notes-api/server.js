@@ -50,6 +50,7 @@ router.put('/notes', koaBody(), async (ctx) => {
 router.delete('/notes/:id', async (ctx, next) => {
   const id = parseInt(ctx.params.id);
   await db.delete(id);
+  ctx.status = 200;
 });
 
 /**

@@ -6,13 +6,14 @@ A small system for managing notes.
 
 - [Overview](#Overview)
 - [Development](#Development) 
+- [Testing](#Testing)
 - [Running](#Running)
-- [using](#Using)
+- [Using](#Using)
 
 
 ## Overview
 
-Comprises two projects -  API and UI.  Both are written in javascript.  Each has a seoarate readme.md file.
+Comprises two sub-projects -  API and UI.  Both are written in javascript.  Each has a separate readme.md file.
 
 - [api readme](notes-api/readme.md)
 - [ui readme](notes-ui/readme.md)
@@ -39,7 +40,7 @@ npm i
 npm start
 ```
 
-To start the ui server in development mode, start a terminal window and enter..
+To start the api server in development mode, start a terminal window and enter..
 
 ```
 cd notes-api
@@ -47,11 +48,20 @@ npm i
 npm start
 ```
 
-The UI will run on port 8080.  The UI will run on port 3200.
+The UI will run on port 8080.  The API will run on port 3200.
 
+Note: the UI project is based on a starter project angularjs-webpack.  This includes an large number of npm dependencies.  The biggest being phantomjs and other packages used for testing.  These are dev-dependencies, so do not have an impact on the generated app bundle.
 
+## Testing
 
-## Running
+You should make sure the API is not running, then you can run the test via:
+
+```
+cd notes-api
+npm test
+```
+
+## Production Running
 
 A simple convenience script has been produced to build both API and UI, then run the API to serve the frontend.
 
@@ -66,7 +76,7 @@ Note: you may need to give execution permissions to demo.sh by `chmod +x demo.sh
 
 ## Using
 
-In demo mode go to http://localhost:3200.  In development mode go to http://localhost:8080
+In production /demno mode go to http://localhost:3200.  In development mode go to http://localhost:8080
 
 The system comprises 2 views and 1 modal (using one of the views).
 
