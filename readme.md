@@ -5,6 +5,7 @@ A small system for managing notes.
 ## Contents
 
 - [Overview](#Overview)
+- [Prerequisites](#prerequsitess)
 - [Development](#Development) 
 - [Testing](#Testing)
 - [Running](#Running)
@@ -27,6 +28,15 @@ The API is Restful JSON and runs on the koa <www.koajs.com> (express successor) 
 The UI is written using the angularjs 1.x framework.  It is an SPA application.  In uses ES6.  Babel is used to compile down to ES5 so that it will run on older browsers, such as Internet Explorer.  Bootstrap 4 has been used for the presentation.  The UI is transpiled, uglified and minified and packaged by Webpack.
 
 The UI and API can be served by separate servers, but for demo purposes the UI is coded to run on the same machine.
+
+## Prerequisites
+
+You will need:
+
+- Apple Mac (Linux should work but not tested -- uses sh commands)
+- Node 7.6 or greater (I used v8.7.0)
+- Xcode additional components (required to build some of the dependencies)
+- 1 minute to build 
 
 ## Development
 
@@ -61,7 +71,7 @@ cd notes
 ./tests.sh
 ```
 
-The script will build the API and run the unit tests.
+The script will build the API and run the unit tests.  Given time I would make easier to configure.
 
 ## Production Running
 
