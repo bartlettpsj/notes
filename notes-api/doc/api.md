@@ -16,7 +16,7 @@ The API can prefixed by a path.  This is typically **/api/** although can be con
 
 | HTTP METHOD | POST | GET              | PUT                 | DELETE              |
 | ----------- | ---- | ---------------- | ------------------- | ------------------- |
-| /notes      | n/a  | Get all notes.   | n/a                 | n/a                 |
+| /notes      | n/a  | Get all notes.   | n/a                 | Deletes all notes.  |
 | /notes/:id  | n/a  | Get single note. | Upsert single note. | Delete single note. |
 
 
@@ -138,6 +138,33 @@ DELETE /api/notes/1
 | ---- | ----------------------- | ------ |
 | 200  | Success                 |        |
 | 404  | `id` could not be found |        |
+| 500  | Unknown server error    |        |
+
+
+
+### /notes
+
+------
+
+#### ***DELETE***
+
+**Description:**  Removes all notes and sets next id to 1. 
+
+**Parameters**
+
+None
+
+**Request Example:** 
+
+```
+DELETE /api/notes
+```
+
+**Responses**
+
+| Code | Description             | Schema |
+| ---- | ----------------------- | ------ |
+| 200  | Success                 |        |
 | 500  | Unknown server error    |        |
 
 

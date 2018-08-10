@@ -25,14 +25,18 @@ router.get('/notes/:id', async (ctx, next) => {
   }
 });
 
-// Send some test data
+/**
+ * Return all notes.
+ */
 router.get('/notes', async (ctx, next) => {
   const data = await db.filter({});
   ctx.body = data;
 });
 
 
-// performs upset (PUT) according to HTTP specification
+/**
+ * Perform upset (PUT) according to HTTP specification.
+ */
 router.put('/notes', koaBody(), async (ctx) => {
     const data = ctx.request.body;
     await db.upsert(data);
@@ -40,11 +44,25 @@ router.put('/notes', koaBody(), async (ctx) => {
   }
 );
 
+/**
+ * Delete individual note.
+ */
 router.delete('/notes/:id', async (ctx, next) => {
   const id = parseInt(ctx.params.id);
-  await db.delete(id)
+  await db.delete(id);
 });
 
+/**
+ * Initialize and clear all notes.
+ */
+router.delete('/notes', async (ctx, next) => {
+  await db.init();
+  ctx.body = "";
+});
+
+
+
+// Startup koa and it's middleware
 try {
   app
     .use(cors())

@@ -19,6 +19,16 @@ class Dbaccess {
   }
 
   /**
+   * Perform initialize of database.
+   *
+   * @returns {Promise<void>}
+   */
+  async init(id) {
+    this.db.set('maxid', 0).write();
+    this.db.get('notes').remove({}).write();
+  };
+
+  /**
    * Perform filter on data.
    *
    * @param filter
