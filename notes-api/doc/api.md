@@ -2,7 +2,7 @@ Notes Service API
 ===============
 Service that provides CRUD services for managing notes.
 
-**Version:** 1.0.0
+**Version:** 1.0.1
 
 ## Introduction
 
@@ -16,7 +16,7 @@ The API can prefixed by a path.  This is typically **/api/** although can be con
 
 | HTTP METHOD | POST | GET              | PUT                 | DELETE              |
 | ----------- | ---- | ---------------- | ------------------- | ------------------- |
-| /notes      | n/a  | Get all notes.   | n/a                 | Deletes all notes.  |
+| /notes      | n/a  | Get notes.       | n/a                 | Deletes all notes.  |
 | /notes/:id  | n/a  | Get single note. | Upsert single note. | Delete single note. |
 
 
@@ -31,24 +31,26 @@ The API can prefixed by a path.  This is typically **/api/** although can be con
 
 #### ***GET***
 
-**Description:** Returns all notes.
+**Description:** Returns notes 
 
 **Parameters**
 
-None.
+​	limit: <limit> - number of rows to return
+
+​	skip: <skip>- starting at skip point.
 
 **Request Example:** 
 
 ```
-GET /api/notes
+GET /api/notes?limit=10&skip=20
 ```
 
 **Responses**
 
-| Code | Description          | Schema |
-| ---- | -------------------- | ------ |
-| 200  | Success              | Note   |
-| 500  | Unknown server error |        |
+| Code | Description          | Schema           |
+| ---- | -------------------- | ---------------- |
+| 200  | Success              | Notes with Count |
+| 500  | Unknown server error |                  |
 
 
 
@@ -172,7 +174,7 @@ DELETE /api/notes
 ## **Models**
 
 ---
-## **Note**  
+### **Note**  
 
 
 | Name     | Type    | Required | Description                                                  |
@@ -181,4 +183,13 @@ DELETE /api/notes
 | title    | string  | No       | Note title                                                   |
 | text     | string  | No       | Note body                                                    |
 | modified | string  | No       | Last modified date in ISO date string format.                |
+
+
+
+### Notes with Count
+
+| Name  | Type    | Required | Description                 |
+| ----- | ------- | -------- | --------------------------- |
+| count | integer | Yes      | Number of notes in database |
+| data  | array   | Yes      | Array of Note objects       |
 
