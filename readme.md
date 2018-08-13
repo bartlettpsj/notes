@@ -21,7 +21,7 @@ Comprises two sub-projects -  API and UI.  Both are written in javascript.  Each
 
 ### API
 
-The API is Restful JSON and runs on the koa <www.koajs.com> (express successor) framework.  It is a native nodejs application, using es7 (async/await) for added simplicity.  It therefore requires node 7.6 or above.  The API includes cors support. 
+The API is Restful JSON and runs on the koa <www.koajs.com> (express successor) framework.  It is a native nodejs application, using es7 (async/await) for added simplicity.  It therefore requires node 7.6 or above.  The API includes cors support.   The API is documented [here](notes-api/doc/api.md).
 
 ### UI
 
