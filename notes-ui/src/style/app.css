@@ -3,24 +3,21 @@ body {
   margin: 20px;
 }
 
-label {
-  font-weight: bold;
+.pagination {
+  margin: 0px
+}
+
+.modified-text {
+  font-size: small;
+  font-style: italic;
+}
+
+.modal-footer {
+  padding-top: 0px;
+  border-top: 0px !important;
 }
 
 /* Make first two columns minimum*/
 td:nth-child(-n+2) {
   width: 1px;
-}
-
-/* Hack to fix bootstrap 4 modal*/
-.fade.in {
-  opacity: 1;
-}
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0);
-}
-.modal-backdrop.in {
-  opacity: 0.5;
 }

@@ -30,12 +30,21 @@ class Dbaccess {
 
   /**
    * Perform filter on data.
+   * returns { count: x, data: [] }
    *
    * @param filter
    */
-  async filter(filter) {
+  async filter(params) {
     try {
-      return this.db.get('notes').filter(filter).value();
+      const limit = parseInt(_.get(params, 'limit'));
+      const skip = parseInt(_.get(params, 'skip'));
+      
+      const notes = this.db.get('notes');
+      const count = notes.size().value();
+      const dropped = notes.drop(skip);
+      const output = limit ? dropped.take(limit) : dropped;
+      return { count, data: output.value() };
+      
     } catch (error) {
       throw `db filter error: ${error} on filter: ${filter}`;
     }

@@ -21,19 +21,10 @@
     </tbody>
   </table>
 
-  <!--todo.. Bootstrap bug doesnt work in v4- they need to add new classes -->
-  <!--<div class="pagination">-->
-  <!--<ul uib-pagination xtemplate-url="vm.paginationUrl" total-items="42" ng-model="vm.pagenumber" class="pagination"></ul>-->
-  <!--</div>-->
-
-  <!--Hard coded for UX demo-->
-  <ul class="pagination float-right">
-    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-
   <button type="button" class="btn btn-primary" ng-click="vm.showNote()">Create Note</button>
   <button type="button" class="btn btn-primary" ng-click="vm.deleteSelections()" ng-disabled="!vm.hasSelected">Delete Selected</button>
+
+  <span uib-pagination class="pull-right" total-items="vm.notesCount" max-size="2" force-ellipses="true"
+        boundary-links="false" ng-model="vm.pageNumber" ng-change="vm.pageChange()"></span>
+
 </div>

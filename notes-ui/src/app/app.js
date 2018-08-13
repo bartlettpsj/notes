@@ -7,10 +7,10 @@ import commonServices from './services/common-services';
 import 'angular-ui-router';
 import moment from "moment";
 
-import notesController from './notes/notes.js';
-import notesTemplate from './notes/notes.html';
-import noteController from './note/note.js';
-import noteTemplate from './note/note.html';
+import notesController from './pages/notes/notes.js';
+import notesTemplate from './pages/notes/notes.html';
+import noteController from './pages/note/note.js';
+import noteTemplate from './pages/note/note.html';
 
 // Bootstrap the app via app controller
 
@@ -28,7 +28,7 @@ class AppController {
 // Define the angular module with dependencies
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap'])
+angular.module(MODULE_NAME, [commonServices, 'ui.router', 'ui.bootstrap', 'ui.bootstrap.pagination'])
 
   .controller('AppCtrl', AppController)
 

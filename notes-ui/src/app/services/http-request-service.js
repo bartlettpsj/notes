@@ -49,7 +49,7 @@ class HttpRequestService {
       headers: {
         'Content-Type': 'application/json'
       },
-      params: params ? {params} : {}
+      params: params ? params : {}
     }).then(response => response.data)
       .catch(error => this.$log.error('http-request-service - getData() failed!'));
   }

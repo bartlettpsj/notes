@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="modal-header">
+<div ng-class="{'container': !vm.modalInstance}">
+  <div ng-class="{'modal-header': vm.modalInstance}">
     <h1>Note {{ vm.note.id }}</h1>
   </div>
 
@@ -18,13 +18,17 @@
       </div>
     </div>
 
-    <div class="offset-sm-1 col-sm-11 small font-italic mt-2">
-      <span title="{{::vm.note.modified | dateTime}}">Last modified {{::vm.note.modified | dateToNow }}</span>
-    </div>
   </div>
+  
+  <div class="" ng-class="{'modal-footer': true}">
+    <div ng-if="!vm.modalInstance">
+      <span class="pull-left col-sm-1"></span>
+      <div class=" form-inline modified-text pull-left">
+        <span title="{{::vm.note.modified | dateTime}}">Last modified {{::vm.note.modified | dateToNow }}</span>
+      </div>
+    </div>
 
-  <div class="modal-footer">
     <button type="button" class="btn btn-primary" ng-click="vm.saveNote()">Save</button>
-    <button type="button" ui-sref="notes" class="btn btn-secondary" ng-click="vm.cancelModal()">{{ vm.modalInstance ? 'Cancel' : 'Return to List' }}</button>
+    <button type="button" ui-sref="notes" class="btn btn-info" ng-click="vm.cancelModal('cancel')">{{ vm.modalInstance ? 'Cancel' : 'Return to List' }}</button>
   </div>
 </div>

@@ -35,8 +35,9 @@ describe('API Tests: ', () => {
       const notes = res.body;
 
       res.should.have.status(200);
-      notes.should.be.a('array');
-      notes.length.should.be.eql(0, 'Database does not have zero rows');
+      notes.should.be.an('object');
+      notes.count.should.be.eql(0, 'Database does not have zero rows count');
+      notes.data.length.should.be.eql(0, 'Database does not have zero rows');
 
       done();
     });
@@ -51,8 +52,10 @@ describe('API Tests: ', () => {
       chai.request(API_URL).get('/notes').end( (err, res) => {
         const notes = res.body;
         res.should.have.status(200);
-        notes.should.be.a('array');
-        notes.length.should.be.eql(1, 'Database does not have one row');
+        notes.should.be.an('object');
+        notes.count.should.be.eql(1, 'Database does not have one row count');
+        notes.data.length.should.be.eql(1, 'Database does not have one row');
+
         done();
       });
     });
@@ -66,8 +69,9 @@ describe('API Tests: ', () => {
       chai.request(API_URL).get('/notes').end( (err, res) => {
         const notes = res.body;
         res.should.have.status(200);
-        notes.should.be.a('array');
-        notes.length.should.be.eql(2, 'Database does not have two rows');
+        notes.should.be.an('object');
+        notes.count.should.be.eql(2, 'Database does not have two rows count');
+        notes.data.length.should.be.eql(2, 'Database does not have two rows');
         done();
       });
     });
@@ -85,8 +89,9 @@ describe('API Tests: ', () => {
       const notes = res.body;
 
       res.should.have.status(200);
-      notes.should.be.a('array');
-      notes.length.should.be.eql(1, 'Database does not have one row');
+      notes.should.be.an('object');
+      notes.count.should.be.eql(1, 'Database does not have one row count');
+      notes.data.length.should.be.eql(1, 'Database does not have one row');
 
       done();
     });
@@ -104,8 +109,9 @@ describe('API Tests: ', () => {
       const notes = res.body;
 
       res.should.have.status(200);
-      notes.should.be.a('array');
-      notes.length.should.be.eql(0, 'Database does not have zero rows');
+      notes.should.be.an('object');
+      notes.count.should.be.eql(0, 'Database does not have zero rows count');
+      notes.data.length.should.be.eql(0, 'Database does not have zero rows');
 
       done();
     });

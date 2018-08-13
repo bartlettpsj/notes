@@ -26,10 +26,11 @@ router.get('/notes/:id', async (ctx, next) => {
 });
 
 /**
- * Return all notes.
+ * Return filtered notes and count.
  */
 router.get('/notes', async (ctx, next) => {
-  const data = await db.filter({});
+  const filter = ctx.request.query;
+  const data = await db.filter(filter);
   ctx.body = data;
 });
 

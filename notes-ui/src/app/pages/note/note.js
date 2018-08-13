@@ -40,7 +40,7 @@ class NoteController {
   saveNote() {
     // Upsert
     this.httpRequestService.putData('notes', this.note).then(response => {
-      this.cancelModal();
+      this.cancelModal('ok');
 
       // Display list
       this.$state.go('notes');
@@ -50,9 +50,9 @@ class NoteController {
   /**
    * Close the modal if opened as modal.
    */
-  cancelModal() {
+  cancelModal(mode) {
     if (this.modalInstance) {
-      this.modalInstance.$close('cancel');
+      this.modalInstance.$close(mode);
     }
   }
 
